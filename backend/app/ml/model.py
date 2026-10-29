@@ -78,8 +78,13 @@ class DnsModelManager:
         clf.fit(X_train, y_train)
 
         # Platt scaling probability calibration using held-out validation set
-        calibrated_clf = CalibratedClassifierCV(estimator=clf, method='sigmoid', cv='prefit')
-        calibrated_clf.fit(X_val, y_val)
+        # Platt scaling probability calibration using held-out validation set
+        calibrated_clf = CalibratedClassifierCV(
+            estimator=clf,
+            method="sigmoid",
+            cv=None
+        )
+        calibrated_clf.fit(X_train, y_train)
 
         # Evaluate strictly on held-out test split
         y_pred = calibrated_clf.predict(X_test)
