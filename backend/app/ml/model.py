@@ -24,6 +24,7 @@ from app.ml.features import (
     FEATURE_NAMES
 )
 from app.ml.dataset import generate_dataset
+from sklearn.calibration import CalibratedClassifierCV
 
 class DnsModelManager:
     def __init__(self):
