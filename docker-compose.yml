@@ -1,0 +1,36 @@
+version: '3.8'
+
+services:
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: dns-shield-backend
+    ports:
+      - "8001:8001"
+    environment:
+      - ENVIRONMENT=production
+      - HOST=0.0.0.0
+      - PORT=8001
+      - CORS_ORIGINS=http://localhost,http://localhost:5173,http://localhost:5174,http://127.0.0.1
+      - DATABASE_URL=sqlite:///./data/dns_shield.db
+      - SECRET_KEY=dns-shield-prod-secret-replace-with-custom-key
+      - INGESTION_API_KEY=shield-sec-dev-api-key-2026
+    volumes:
+      - dns_shield_data:/app/data
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: Dockerfile
+    container_name: dns-shield-frontend
+    ports:
+      - "80:80"
+    depends_on:
+      - backend
+    restart: unless-stopped
+
+volumes:
+  dns_shield_data:
+    driver: local

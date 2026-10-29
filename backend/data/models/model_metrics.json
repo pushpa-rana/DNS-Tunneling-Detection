@@ -1,0 +1,41 @@
+{
+  "model_type": "Gradient-Boosted Flow-Lexical Classifier (Platt Calibrated)",
+  "model_version": "GradientBoosting-v2.0-FlowLexical",
+  "trained_at": "2026-10-29T10:02:32.813916+00:00",
+  "dataset_source": "Stratified Synthetic & Simulated DNS Tunneling Vectors (Iodine, DNScat2, Base64/Hex exfiltration vs Alexa/Enterprise CDN subdomains)",
+  "total_samples": 4000,
+  "train_samples": 2800,
+  "val_samples": 600,
+  "test_samples": 600,
+  "legitimate_samples": 2000,
+  "tunneling_samples": 2000,
+  "accuracy": 1.0,
+  "precision": 1.0,
+  "recall": 1.0,
+  "f1_score": 1.0,
+  "roc_auc": 1.0,
+  "confusion_matrix": {
+    "tn": 300,
+    "fp": 0,
+    "fn": 0,
+    "tp": 300
+  },
+  "feature_importance": {
+    "shannon_entropy": 0.6753,
+    "hex_ratio": 0.1012,
+    "subdomain_depth": 0.0775,
+    "consecutive_consonant_max": 0.0679,
+    "num_labels": 0.0609,
+    "repeated_char_ratio": 0.0047,
+    "hostname_length": 0.0041,
+    "digit_ratio": 0.0023,
+    "vowel_ratio": 0.0021,
+    "consonant_ratio": 0.0019,
+    "max_label_length": 0.0016,
+    "avg_label_length": 0.0003,
+    "hyphen_count": 0.0003,
+    "underscore_count": 0.0,
+    "has_known_tld": 0.0
+  },
+  "disclaimer": "Metrics are evaluated strictly on held-out test splits. Static lexical analysis alone cannot conclusively establish malicious intent; correlation with network telemetry, query frequency, and threat intelligence is advised."
+}
